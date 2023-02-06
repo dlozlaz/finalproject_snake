@@ -19,6 +19,7 @@ def map_coord(list_coordinates):
 
 def movement(coordinates,direction):
     """Moves list in a given direction"""
+    new_point = []
     x = coordinates[-1][0]
     y = coordinates[-1][1]
     if direction == 'e':
@@ -29,7 +30,17 @@ def movement(coordinates,direction):
         x = x + 1
     elif direction == 'n':
         x = x - 1
-    coordinates.append([x,y])
+    if x < 0 or x > 9 or y < 0 or y > 9:
+        status = '!'
+    else:
+        new_point.append((x,y))
+        if (all(x in coordinates for x in new_point)):
+          status = '!'
+        else:
+          coordinates.extend(new_point)
+          coordinates.pop(0)
+          status = '-'
+    return(status)
 
   
 def call_moves():
@@ -37,10 +48,13 @@ def call_moves():
 
     map_coord(test_coordinates)
     move = input('In which direction you want to move? Type "n", "s", "e" or "w", or type "end" to finish the game. ')
+
     while move != 'end':
-        movement(test_coordinates,move)
-        map_coord(test_coordinates)
-        move = input('In which direction you want to move? Type "n", "s", "e" or "w", or type "end" to finish the game. ')
+        if movement(test_coordinates,move) == '!':
+            move = input("You can't move there. In which direction you want to move? Type 'n', 's', 'e' or 'w', or type 'end' to finish the game. ")
+        else:
+            map_coord(test_coordinates)
+            move = input('In which direction you want to move? Type "n", "s", "e" or "w", or type "end" to finish the game. ')
 
 test_coordinates = [(0,0),(0,1),(0,2)]
 call_moves()    
