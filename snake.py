@@ -1,4 +1,4 @@
-def map_coordinates(list_coordinates):
+def map_coord(list_coordinates):
     """Maps the list of coordinates in a grid"""
     
     grid1 = []
@@ -32,7 +32,7 @@ def movement(coordinates,direction):
     coordinates.append([x,y])
 
   
-def call_moves()
+def call_moves():
     """Asks user the direction to move"""
 
     map_coord(test_coordinates)
@@ -42,8 +42,8 @@ def call_moves()
         map_coord(test_coordinates)
         move = input('In which direction you want to move? Type "n", "s", "e" or "w", or type "end" to finish the game. ')
 
-
-    
+test_coordinates = [(0,0),(0,1),(0,2)]
+call_moves()    
 
 
 
