@@ -1,0 +1,1 @@
+Final project for the Pyladies Beginners Course. The goal is to create a clone of the famous game SNAKE
